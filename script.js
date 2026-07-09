@@ -40,21 +40,25 @@ function updateArrows(){
  }
 }
 function bg(){
- ctx.fillStyle="#87b7ff";ctx.fillRect(0,0,W,H);
- ctx.fillStyle="#4c8b3b";ctx.fillRect(0,G,W,H-G);
- ctx.fillStyle="#6a4a22";ctx.fillRect(0,G+18,W,72);
+const sky=ctx.createLinearGradient(0,0,0,G);sky.addColorStop(0,"#7eb8ff");sky.addColorStop(1,"#dcefff");ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+ctx.fillStyle="#75889a";for(let i=0;i<8;i++){ctx.beginPath();ctx.moveTo(i*170,G-120);ctx.lineTo(i*170+90,G-210);ctx.lineTo(i*170+180,G-120);ctx.fill();}
+ctx.fillStyle="#415c35";ctx.fillRect(0,G-22,W,22);
+for(let i=0;i<W;i+=18){ctx.fillStyle=i%36?"#4e9c42":"#58ab47";ctx.fillRect(i,G-6,18,6);}
+ctx.fillStyle="#7b5b35";ctx.fillRect(0,G,W,90);
+for(let i=0;i<W;i+=32){ctx.fillStyle="#6a4d2d";ctx.fillRect(i,G+18,20,3);}
 }
+function banner(x,col){ctx.strokeStyle="#6b4b22";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x,G-55);ctx.lineTo(x,G-120);ctx.stroke();ctx.fillStyle=col;ctx.beginPath();ctx.moveTo(x,G-118);ctx.quadraticCurveTo(x+22,G-112+Math.sin(Date.now()/250+x)*4,x,G-98);ctx.fill();}
 function drawUnit(u,col){
  ctx.fillStyle=col;
  ctx.beginPath();ctx.arc(u.x,u.y-18,5,0,7);ctx.fill();
- ctx.fillRect(u.x-2,u.y-13,4,13);
+ ctx.fillRect(u.x-2,u.y-13,4,13);ctx.strokeStyle="#222";ctx.beginPath();ctx.moveTo(u.x-4,u.y);ctx.lineTo(u.x-8*u.d,u.y+8);ctx.moveTo(u.x+4,u.y);ctx.lineTo(u.x+8*u.d,u.y+8);ctx.stroke();
  ctx.beginPath();
  ctx.moveTo(u.x,u.y-10);
  ctx.lineTo(u.x+6*u.d,u.y-4);
  ctx.strokeStyle=col;ctx.stroke();
 }
 function draw(){
- bg();
+ bg();banner(40,"#2d6cff");banner(W-40,"#c92b2b");
  ctx.strokeStyle="#553";
  for(const a of arrows){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(a.x-a.vx*2,a.y);ctx.stroke();}
  A.forEach(u=>drawUnit(u,"#2d6cff"));
