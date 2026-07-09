@@ -1,7 +1,5 @@
+# Changelog
 
-
-## HUD redesign
-- Responsive grid HUD.
-- Health bars constrained within HUD.
-- Medieval panel styling.
-- Mobile-friendly wrapping.
+## HUD Rebuild
+- Replaced HUD markup with new component layout.
+- Prepared unified army panels and centered controls.

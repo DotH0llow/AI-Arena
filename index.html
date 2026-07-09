@@ -1,10 +1,28 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Medieval Battle Sim</title><link rel="stylesheet" href="style.css"></head>
-<body><audio id="bgm" src="Medieval Music Vox Vulgaris - Rokatanc.mp3" autoplay loop></audio><div id="wrap"><div id="ui"><button id="start">Start Battle</button><button id="pause">Pause</button><button id="mute">🔊</button>
-<label style="margin-left:10px">Music
-<input id="volume" type="range" min="0" max="100" value="32">
-</label>
-<div class="bars"><div>AI 1<div class="bar"><div id="h1"></div></div></div>
+<body><audio id="bgm" src="Medieval Music Vox Vulgaris - Rokatanc.mp3" autoplay loop></audio><div id="wrap">
+<div id="ui">
+  <div class="army-panel west">
+    <div class="army-title">🦁 WEST ARMY</div>
+    <div class="health-wrap"><label>82%</label><progress id="hp1" max="100" value="82"></progress></div>
+  </div>
+  <div class="army-panel east">
+    <div class="army-title">EAST ARMY 🐉</div>
+    <div class="health-wrap"><label>76%</label><progress id="hp2" max="100" value="76"></progress></div>
+  </div>
+  <div class="hud-controls">
+    <button id="start">▶ Battle</button>
+    <button id="pause">❚❚ Pause</button>
+    <button id="mute">🔊</button>
+    <label>Music <input id="volume" type="range" min="0" max="100"></label>
+    <div class="battle-status">Battle</div>
+    <div class="speed">
+      <button>x1</button><button>x2</button><button>x4</button>
+    </div>
+    <button>⚙ Settings</button>
+  </div>
+</div>
+</div>
 <div>AI 2<div class="bar"><div id="h2"></div></div></div></div>
 <div id="msg">Ready</div></div><canvas id="c" width="1125" height="650"></canvas></div><div id="side"><h3>Score</h3><div>Last Winner: <span id="last">None</span></div><div>AI1: <span id="s1">0</span></div><div>AI2: <span id="s2">0</span></div><div style="margin-top:20px">Feature: random critical hits.</div></div>
 <script src="script.js"></script></body></html>
