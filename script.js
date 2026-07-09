@@ -2,9 +2,10 @@
 const c=document.getElementById('c'),ctx=c.getContext('2d');
 const W=c.width,H=c.height,G=H-90,bgm=document.getElementById('bgm');
 const start=document.getElementById('start'),pauseBtn=document.getElementById('pause'),muteBtn=document.getElementById('mute');
+const volume=document.getElementById('volume');
 const h1=document.getElementById('h1'),h2=document.getElementById('h2'),msg=document.getElementById('msg'),last=document.getElementById('last'),sc1=document.getElementById('s1'),sc2=document.getElementById('s2');
 let s1=0,s2=0,run=false,paused=false,A=[],B=[],arrows=[];
-async function beginMusic(){try{bgm.src="audio/Rokatanc.mp3";bgm.volume=.45;await bgm.play();}catch(e){}}
+async function beginMusic(){try{bgm.src="audio/Rokatanc.mp3";const saved=localStorage.getItem('music-volume');bgm.volume=saved?Number(saved):0.315;await bgm.play();}catch(e){}}
 ["pointerdown","keydown","mousemove","touchstart"].forEach(e=>addEventListener(e,beginMusic,{once:true}));
 beginMusic();
 muteBtn.onclick=()=>bgm.muted=!bgm.muted;
@@ -74,3 +75,15 @@ function loop(){
 }
 start.onclick=()=>{A=make(false);B=make(true);arrows=[];run=true;start.disabled=true;msg.textContent="Battle";}
 loop();
+
+
+volume.value=Math.round(bgm.volume*100);
+volume.oninput=()=>{
+  bgm.volume=volume.value/100;
+  localStorage.setItem('music-volume',bgm.volume);
+  muteBtn.textContent=bgm.volume===0?"🔇":"🔊";
+};
+muteBtn.onclick=()=>{
+  bgm.muted=!bgm.muted;
+  muteBtn.textContent=bgm.muted?"🔇":"🔊";
+};
