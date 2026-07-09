@@ -1,9 +1,27 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Medieval Battle Sim</title><link rel="stylesheet" href="style.css"></head>
 <body><audio id="bgm" src="Medieval Music Vox Vulgaris - Rokatanc.mp3" autoplay loop></audio><div id="wrap">
-<div id="ui">
-  <div class="army-panel west">
-    <div class="army-title">🦁 WEST ARMY</div>
+<header id="hud">
+<section class="army-panel west">
+<h3>🦁 WEST ARMY</h3>
+<div class="hp-row"><span id="hp1Text">100%</span><progress id="h1" max="100" value="100"></progress></div>
+<div class="meta"><span>Wins: <b id="s1">0</b></span></div>
+</section>
+<section class="center-panel">
+<div id="battleState">⚔ BATTLE</div>
+<div class="controls">
+<button id="start">Battle</button>
+<button id="pause">Pause</button>
+<button id="mute">🔊</button>
+<label>Music <input id="volume" type="range" min="0" max="100"></label>
+</div>
+</section>
+<section class="army-panel east">
+<h3>EAST ARMY 🐉</h3>
+<div class="hp-row"><progress id="h2" max="100" value="100"></progress><span id="hp2Text">100%</span></div>
+<div class="meta"><span>Wins: <b id="s2">0</b></span></div>
+</section>
+</header>
     <div class="health-wrap"><label>82%</label><progress id="hp1" max="100" value="82"></progress></div>
   </div>
   <div class="army-panel east">
