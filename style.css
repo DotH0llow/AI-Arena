@@ -18,3 +18,28 @@ box-shadow:0 4px 10px rgba(0,0,0,.35);
 button{border-radius:6px}
 #volume{width:160px}
 #msg{font-weight:bold;color:#f5d27a}
+
+
+#ui{
+display:grid;
+grid-template-columns:auto auto auto 1fr 1fr auto;
+align-items:center;
+gap:14px;
+padding:14px 18px;
+background:linear-gradient(#6d4b27,#3d2814);
+border:3px solid #a7864c;
+border-radius:14px;
+max-width:1200px;
+margin:0 auto 14px;
+box-sizing:border-box;
+}
+#ui>*{min-width:0}
+.health-group{display:flex;flex-direction:column;gap:4px;min-width:220px}
+.health-group progress,.health-group .bar{width:100%}
+#volume{width:150px}
+button{padding:10px 16px}
+@media(max-width:1000px){
+#ui{grid-template-columns:1fr;max-width:95%}
+.health-group{min-width:0}
+#volume{width:100%}
+}
